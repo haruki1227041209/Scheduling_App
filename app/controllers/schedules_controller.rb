@@ -1,7 +1,5 @@
 class SchedulesController < ApplicationController
   def index
-    @hello = "こんにちは"
-    @message = "helloアクションが実行されています"
     @schedules = Schedule.all
     @count = Schedule.count
   end
