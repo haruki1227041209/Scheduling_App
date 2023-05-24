@@ -1,53 +1,52 @@
-<h3>スケジュール情報一覧</h3>
+<div class="container d-flex justify-content-between">
+  <h5 class="my-3">スケジュール情報一覧</h5>
+  <a href="<%= new_schedule_path %>" class="btn btn-outline-success my-3 text-decoration-none">新規登録</a>
+</div>
 
 <% if flash[:notice] %>
 <p class="notice"><%= flash[:notice] %></p>
 <% end %>
 
-<table>
+<table class="table container table-success table-striped">
   <thead>
     <tr>
-      <th>id</th>
-      <th>タイトル</th>
-      <th>開始日</th>
-      <th>終了日</th>
-      <th>終日</th>
-      <th>更新日時</th>
-      <th>参照</th>
-      <th>編集</th>
-      <th>削除</th>
+      <th scope="col">ID</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">開始日</th>
+      <th scope="col">終了日</th>
+      <th scope="col">終日</th>
+      <th scope="col">更新日時</th>
+      <th scope="col">参照</th>
+      <th scope="col">編集</th>
+      <th scope="col">削除</th>
     </tr>
   </thead>
 
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= schedule.id %></td>
+        <th scope="row"><%= schedule.id %></th>
         <td><%= schedule.title %></td>
         <td><%= schedule.start_date %></td>
         <td><%= schedule.end_date %></td>
         <td><%= schedule.all_day ? '○' : '' %></td>
         <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
-        <td>
-          <%= link_to "参照" , schedule %>
+        <td >
+          <%= link_to "参照" , schedule, class: "btn btn-outline-primary mt-1 text-decoration-none" %>
         </td>
         <td>
-          <%= link_to "編集" , [:edit, schedule] %>
+          <%= link_to "編集" , [:edit, schedule], class: "btn btn-outline-success mt-1 text-decoration-none" %>
         </td>
         <td>
-           <%= link_to "削除", schedule, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+           <%= link_to "削除", schedule, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger mt-1 text-decoration-none" %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p><%= link_to "新規登録", :new_schedule %></p>
+<div class="container d-flex justify-content-between bg-success">
+  <p class="text-light my-3">予定合計<%= @count %>件</p>
+  <p class="text-light my-3">本日の日付  <%= Date.current.strftime('%Y/%m/%d') %></p>
+</div>
 
-<p>---------------------------------</p>
-<h1>Schedulesアプリ作るよ！！！！</h1>
-<p>Find me in app/views/schedules/index.html.erb</p>
-<h2><%= @hello %></h2>
-<p><%= @message %></p>
-
-<%= render "shared/partial" %>

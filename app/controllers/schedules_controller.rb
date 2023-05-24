@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
     @hello = "こんにちは"
     @message = "helloアクションが実行されています"
     @schedules = Schedule.all
+    @count = Schedule.count
   end
 
   def new

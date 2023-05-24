@@ -1,34 +1,32 @@
-<h3>スケジュール詳細</h3>
+<div class="container" style="width: 800px;">
+  <h3 class="my-3">スケジュール詳細</h3>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <td><%= @schedule.title %></td>
-  </tr>
-  <tr>
-    <th>開始日</th>
-    <td><%= @schedule.start_date %></td>
-  </tr>
-  <tr>
-    <th>終了日</th>
-    <td><%= @schedule.end_date %></td>
-  </tr>
-  <tr>
-    <th>終日</th>
-    <td><%= @schedule.all_day ? '○' : ''  %></td>
-  </tr>
-  <tr>
-    <th>スケジュールメモ</th>
-    <td><%= @schedule.memo %></td>
-  </tr>
-</table>
+  <table class="table table-bordered">
+    <tr>
+      <th class="bg-success text-light">タイトル</th>
+      <td><%= @schedule.title %></td>
+    </tr>
+    <tr>
+      <th class="bg-success text-light">開始日</th>
+      <td><%= @schedule.start_date %></td>
+    </tr>
+    <tr>
+      <th class="bg-success text-light">終了日</th>
+      <td><%= @schedule.end_date %></td>
+    </tr>
+    <tr>
+      <th class="bg-success text-light">終日</th>
+      <td><%= @schedule.all_day ? '○' : '' %></td>
+    </tr>
+    <tr>
+      <th class="bg-success text-light">スケジュールメモ</th>
+      <td><%= @schedule.memo %></td>
+    </tr>
+  </table>
 
-<%= link_to '編集', edit_schedule_path(@schedule) %>
+  <div class="d-flex justify-content-between my-4">
+    <%= link_to "編集", edit_schedule_path(@schedule), class: "btn btn-outline-primary" %>
+    <%= link_to "スケジュール情報一覧に戻る(キャンセル)", :schedules, class: "btn btn-secondary" %>
+  </div>
 
-
-
-<div>
-  <ul>
-    <li><%= link_to "スケジュール情報一覧に戻る", :schedules %></li>
-  </ul>
 </div>
